@@ -8,12 +8,16 @@
     Chris has label 1
 """
 
+import sys
 from time import time
 
 from sklearn.metrics import accuracy_score
 from sklearn.naive_bayes import GaussianNB
 
+
+sys.path.append("/Users/vipul/Work/Github/ml-projects/udacity/tools")
 from email_preprocess import preprocess
+
 
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
