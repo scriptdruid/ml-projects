@@ -48,14 +48,16 @@ def preprocess(
     features_test_transformed = vectorizer.transform(features_test)
     ### feature selection, because text is super high dimensional and
     ### can be really computationally chewy as a result
-    selector = SelectPercentile(f_classif, percentile=10)
+    # selector = SelectPercentile(f_classif, percentile=1)  # 379 features
+    selector = SelectPercentile(f_classif, percentile=10)  # 3785 features
+
     selector.fit(features_train_transformed, labels_train)
     features_train_transformed = selector.transform(
         features_train_transformed
     ).toarray()
     features_test_transformed = selector.transform(features_test_transformed).toarray()
 
-    ### info on the data
+    ## info on the data
     print("no. of Chris training emails:", sum(labels_train))
     print("no. of Sara training emails:", len(labels_train) - sum(labels_train))
     return (
