@@ -65,11 +65,14 @@ plt.ylabel("grade")
 plt.show()
 ################################################################################
 
+# print(ada_clf.__class__.__name__)
 
 # visualization code (prettyPicture) to show you the decision boundary
 
 try:
     prettyPicture(ada_clf, features_test, labels_test)
+    prettyPicture(knn_clf, features_test, labels_test)
+    prettyPicture(rf_clf, features_test, labels_test)
 except NameError:
     pass
 

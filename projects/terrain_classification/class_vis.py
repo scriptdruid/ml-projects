@@ -36,8 +36,7 @@ def prettyPicture(clf, X_test, y_test):
     plt.legend()
     plt.xlabel("bumpiness")
     plt.ylabel("grade")
-
-    plt.savefig("test.png")
+    plt.savefig(f"{clf.__class__.__name__}.png")
 
 
 def output_image(name, format, bytes):
