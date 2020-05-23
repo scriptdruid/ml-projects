@@ -9,22 +9,30 @@ from sklearn.metrics import accuracy_score
 
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
+
+def fit_and_predict(clf, features_train, labels_train, features_test, labels_test):
+    """making function to fit , predict and return accuracy"""
+    clf.fit(features_train, labels_train)
+    pred = clf.predict(features_test)
+    return accuracy_score(labels_test, pred)
+
+
 ada_clf = AdaBoostClassifier()
-ada_clf.fit(features_train, labels_train)
-ada_pred = ada_clf.predict(features_test)
-ada_accuracy = accuracy_score(labels_test, ada_pred)
+ada_accuracy = fit_and_predict(
+    ada_clf, features_train, labels_train, features_test, labels_test
+)
 print(f"The accuracy of AdaBoostClassifier is : {ada_accuracy}")
 
 knn_clf = KNeighborsClassifier()
-knn_clf.fit(features_train, labels_train)
-knn_pred = knn_clf.predict(features_test)
-knn_accuracy = accuracy_score(labels_test, knn_pred)
+knn_accuracy = fit_and_predict(
+    knn_clf, features_train, labels_train, features_test, labels_test
+)
 print(f"The accuracy of KNeighborsClassifier is : {knn_accuracy}")
 
 rf_clf = RandomForestClassifier()
-rf_clf.fit(features_train, labels_train)
-rf_pred = rf_clf.predict(features_test)
-rf_accuracy = accuracy_score(labels_test, rf_pred)
+rf_accuracy = fit_and_predict(
+    rf_clf, features_train, labels_train, features_test, labels_test
+)
 print(f"The accuracy of RandomForestClassifier is : {rf_accuracy}")
 
 
