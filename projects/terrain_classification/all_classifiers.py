@@ -23,7 +23,7 @@ ada_accuracy = fit_and_predict(
 )
 print(f"The accuracy of AdaBoostClassifier is : {ada_accuracy}")
 
-knn_clf = KNeighborsClassifier()
+knn_clf = KNeighborsClassifier(n_neighbors=18)
 knn_accuracy = fit_and_predict(
     knn_clf, features_train, labels_train, features_test, labels_test
 )
@@ -77,14 +77,17 @@ plt.show()
 
 # visualization code (prettyPicture) to show you the decision boundary
 
-try:
-    prettyPicture(ada_clf, features_test, labels_test)
-    prettyPicture(knn_clf, features_test, labels_test)
-    prettyPicture(rf_clf, features_test, labels_test)
-except NameError:
-    pass
+# try:
+#     prettyPicture(ada_clf, features_test, labels_test)
+#     prettyPicture(knn_clf, features_test, labels_test)
+#     prettyPicture(rf_clf, features_test, labels_test)
+# except NameError:
+#     pass
 
 # The default accuracies without any parameter tuning
 # The accuracy of AdaBoostClassifier is : 0.924
 # The accuracy of KNeighborsClassifier is : 0.92
 # The accuracy of RandomForestClassifier is : 0.916
+
+# It seems KNN performs the best and with modifying the n_neighbors=18
+# The accuracy of KNeighborsClassifier is : 0.94
